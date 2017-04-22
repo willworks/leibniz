@@ -1,8 +1,13 @@
-import { Post, Controller, Get } from '../../src/application.js'
+import { Post, Controller, Get, Validate, Joi } from '../../src/application.js'
 
 @Controller('/post')
 class PostController {
   @Get('/:id')
+  @Validate({
+    params: {
+      id: Joi.number().integer()
+    }
+  })
   async index (ctx) {
     ctx.status = 200
     ctx.body = {

@@ -58,6 +58,8 @@ export default class App extends Koa {
   }
 }
 
+export { Joi } from 'koa-joi-router'
 export * from './decorator/authorization'
 export * from './decorator/controller'
 export * from './decorator/route'
+export * from './decorator/validate'

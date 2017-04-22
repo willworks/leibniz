@@ -51,6 +51,11 @@ function Method (method, path, ...middleware) {
     if (!target.router) {
       target.router = new Router()
     }
-    target.router[method.toLowerCase()](path, ...middleware, descriptor.value)
+    target.router.route({
+      method: method.toLowerCase(),
+      path,
+      validate: descriptor.value.validation,
+      handler: [...middleware, descriptor.value]
+    })
   }
 }
