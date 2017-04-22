@@ -2,13 +2,13 @@ import Koa from 'koa'
 import Cookies from 'cookies'
 import accepts from 'accepts'
 import callsite from 'callsite'
+import glob from 'glob'
+import path from 'path'
 import { autobind, override } from 'core-decorators'
 
 import Context from './context'
 import Request from './request'
 import Response from './response'
-import Router from './router'
-import { route } from './decorator/decorator'
 
 @autobind
 export default class App extends Koa {
@@ -18,10 +18,22 @@ export default class App extends Koa {
     this.request = new Request()
     this.response = new Response()
     this.options = options
+    this.middleware = []
     this.execPath = callsite()[1].getFileName()
-    this.Router = Router
-    // decorator
-    this.route = route
+    // Inject App Directory
+    this.init(this.execPath)
+  }
+
+  init (execPath) {
+    // directory 'controller'
+    const controllerPath = path.resolve(execPath, '..', 'controller')
+    glob(`${controllerPath}/*.js`, (err, files) => files.forEach(file => {
+      if (err) {
+        console.error(err)
+      }
+      const Controller = require(file).default
+      this.middleware.push(Controller.prototype.router.middleware())
+    }))
   }
 
   @override
