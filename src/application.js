@@ -57,3 +57,7 @@ export default class App extends Koa {
     return context
   }
 }
+
+export * from './decorator/authorization'
+export * from './decorator/controller'
+export * from './decorator/route'
