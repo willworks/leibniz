@@ -14,7 +14,10 @@
     "callsite": "^1.0.0",
     "cookies": "^0.7.0",
     "core-decorators": "^0.17.0",
-    "koa": "^2.2.0"
+    "jsonwebtoken": "^7.3.0",
+    "koa": "^2.2.0",
+    "koa-joi-router": "^5.0.0",
+    "koa-jwt": "^3.2.1"
   },
   "devDependencies": {
     "ava": "^0.19.1",

@@ -7,6 +7,8 @@ import { autobind, override } from 'core-decorators'
 import Context from './context'
 import Request from './request'
 import Response from './response'
+import Router from './router'
+import { route } from './decorator/decorator'
 
 @autobind
 export default class App extends Koa {
@@ -17,6 +19,9 @@ export default class App extends Koa {
     this.response = new Response()
     this.options = options
     this.execPath = callsite()[1].getFileName()
+    this.Router = Router
+    // decorator
+    this.route = route
   }
 
   @override
