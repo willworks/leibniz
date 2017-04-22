@@ -8,7 +8,7 @@ const methods = ['HEAD', 'OPTIONS', 'GET', 'PUT', 'PATCH', 'POST', 'DELETE']
  * @param {String} method 请求方式
  * @param {Function[]} middleware 中间件
  */
-export function route (path = '/', method, ...middleware) {
+export function Route (path = '/', method, ...middleware) {
   return function (target, key, descriptor) {
     if (!target.router) {
       target.router = new Router()
@@ -25,7 +25,7 @@ export function route (path = '/', method, ...middleware) {
 /**
  * 装饰 route 要求提供 jwt
  */
-export function authentication () {
+export function Authentication () {
   return (target, key, descriptor) => {
     descriptor.value = async (ctx, next) => {
       if (ctx.request.header.authorization && ctx.state.user) {

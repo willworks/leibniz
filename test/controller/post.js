@@ -1,8 +1,8 @@
-import { route, Controller } from '../../src/decorator/decorator'
+import { Route, Controller } from '../../src/decorator/decorator'
 
 @Controller('/post')
 class PostController {
-  @route('/:id', 'GET')
+  @Route('/:id', 'GET')
   async index (ctx) {
     ctx.status = 200
     ctx.body = {
@@ -10,7 +10,7 @@ class PostController {
     }
   }
 
-  @route('/:id', 'POST')
+  @Route('/:id', 'POST')
   async save (ctx) {
     ctx.status = 405
     ctx.body = {
