@@ -6,10 +6,10 @@ test(async t => {
   const app = new App()
 
   const res = await request(app.listen())
-    .get('/123')
+    .get('/post/123')
     .expect(200)
   t.true(res.body.success)
   await request(app.listen())
-    .post('/123')
+    .post('/post/123')
     .expect(405)
 })
