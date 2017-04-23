@@ -16,18 +16,18 @@ class KoaContextClass {
 
 @autobind
 export default class Context extends KoaContextClass {
-  constructor (__app__) {
+  constructor () {
     super()
     this.service = []
-    this.init(__app__)
+    this.init()
   }
 
-  init (execPath) {
+  init () {
     if (_cacheServiceFiles) {
       this.service = _cacheServiceFiles
       return
     }
-    const servicePath = path.resolve(execPath, '..', 'service')
+    const servicePath = path.resolve(__app__, '..', 'service')
     const serviceFiles = glob.sync(`${servicePath}/**/*.js`)
     serviceFiles.forEach(file => {
       this.service[path.basename(file, '.js')] = require(file).default

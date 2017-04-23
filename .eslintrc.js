@@ -5,5 +5,8 @@ module.exports = {
         "babel",
         "standard",
         "promise"
-    ]
+    ],
+    "globals": {
+        "__app__": true
+    }
 };
