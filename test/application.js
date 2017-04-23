@@ -5,6 +5,8 @@ import request from 'supertest'
 test(async t => {
   const app = new App()
   app.listen()
+  // TODO: take some time to initialize
+  await new Promise(resolve => setTimeout(() => resolve(), 100))
   const res1 = await request(app.callback())
     .get('/post/123')
     .expect(200)
@@ -18,5 +20,5 @@ test(async t => {
   const res3 = await request(app.callback())
     .get('/post/aaa')
     .expect(400)
-  t.is(res3.text, 'child "id" fails because ["id" must be a number]')
+  t.is(res3.body.message, 'child "id" fails because ["id" must be a number]')
 })
