@@ -1,35 +1,16 @@
 import path from 'path'
 
-export default function (pathsList) {
-  let resultList = {}
-  pathsList = pathsList.map(paths => paths.split(path.sep))
-  pathsList.forEach(paths => {
-    let judgeList = {}
-    console.log(paths)
-    for (let i = __app__.split(path.sep).length; i < paths.length; i++) {
-      // console.log(i)
-      judgeList = resultList
-      for (let j = __app__.split(path.sep).length; j <= i; j++) {
-        let key = paths[j]
-        // console.log(key)
-        if (judgeList[key] === undefined) {
-          if (j !== paths.length - 1) {
-            judgeList[key] = {}
-          } else {
-            let allpath = ''
-            paths.forEach(key => {
-              allpath = allpath + key + '/'
-            })
-            allpath = allpath.slice(0, -1)
-            // console.log(allpath)
-            key = key.slice(0, -3)
-            judgeList[key] = require(allpath).default
-          }
-        }
-        judgeList = judgeList[key]
-      }
+export default function (pathList) {
+  const moduleList = {}
+  const serviceRootPath = path.resolve(__app__, '..', 'service')
+  pathList = pathList.map(item => path.relative(serviceRootPath, item).split(path.sep)).sort()
+  pathList.forEach(items => items.reduce((pre, next) => {
+    if (/\./.test(next)) {
+      pre[path.basename(next, '.js')] = require(path.join(__app__, '..', 'service', items.join(path.sep))).default
+    } else {
+      pre[next] = pre[next] || {}
+      return pre[next]
     }
-  })
-  console.log(resultList)
-  return resultList
+  }, moduleList))
+  return moduleList
 }
