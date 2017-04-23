@@ -2,6 +2,17 @@
 
 > Build for RESTful Web services
 
+### TodoList
+
+- [ ] ratelimit 中间件自动装载
+- [ ] 配置文件及读取，据此配置中间件加载等
+- [ ] 中间件装饰器，useBefore 和 useAfter
+- [ ] context 扩展方法
+- [ ] request 扩展方法
+- [ ] util 工具类
+- [ ] controller 类中定义钩子 before, after (useBefore 只能装饰类方法，这个相当于装饰了整个类)
+- [ ] ...
+
 ### Example
 
 - app.js
@@ -15,7 +26,7 @@
 
 - controller/post.js
   ```javascript
-  import { Post, Get, Controller, Validate, Joi } from 'Kun'
+  import { Get, Controller, Validate, Joi } from 'Kun'
 
   @Controller('/post')
   export default class PostController {
@@ -38,7 +49,7 @@
 - service/post.js
   ```javascript
   export default class PostService {
-    static async function (id) {
+    static async show (id) => {
       return await Database.Post.findById(id)
     }
   }
