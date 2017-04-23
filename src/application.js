@@ -33,6 +33,12 @@ export default class App extends Koa {
     const controllerPath = path.resolve(execPath, '..', 'controller')
     const controllerFiles = glob.sync(`${controllerPath}/**/*.js`)
     controllerFiles.forEach(file => this.use(require(file).default.prototype.router.middleware()))
+    // inject service
+    const servicePath = path.resolve(execPath, '..', 'service')
+    const serviceFiles = glob.sync(`${servicePath}/**/*.js`)
+    serviceFiles.forEach(file => {
+      this.context.service[path.basename(file, '.js')] = require(file).default
+    })
   }
 
   @override

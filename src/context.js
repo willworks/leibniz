@@ -1,7 +1,14 @@
 import koaContext from 'koa/lib/context'
 
-export default class Context {
+class KoaContext {
   constructor () {
     return Object.create(koaContext)
+  }
+}
+
+export default class Context extends KoaContext {
+  constructor () {
+    super()
+    this.service = []
   }
 }
