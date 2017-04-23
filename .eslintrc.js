@@ -7,6 +7,6 @@ module.exports = {
         "promise"
     ],
     "globals": {
-        "__app__": true
+        "__appname": true
     }
 };

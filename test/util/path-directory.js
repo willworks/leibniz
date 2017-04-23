@@ -4,7 +4,7 @@ import glob from 'glob'
 import pathDirectory from '../../src/util/path-directory'
 
 test(async t => {
-  global.__app__ = path.resolve(__dirname, '../application.js')
+  global.__appname = path.resolve(__dirname, '..')
   const servicePath = path.resolve(__dirname, '..', 'service')
   const serviceFiles = glob.sync(`${servicePath}/**/*.js`)
   const service = pathDirectory(serviceFiles)

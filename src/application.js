@@ -14,7 +14,7 @@ import Response from './response'
 export default class App extends Koa {
   constructor (options = {}) {
     super()
-    this.__app__ = global.__app__ = callsite()[1].getFileName()
+    this.__appname = global.__appname = path.parse(callsite()[1].getFileName()).dir
     this.context = new Context()
     this.request = new Request()
     this.response = new Response()
@@ -30,7 +30,7 @@ export default class App extends Koa {
     const middlewareFiles = glob.sync(`${middlewarePath}/**/*.js`)
     middlewareFiles.forEach(file => this.use(require(file).default()))
     // inject controller
-    const controllerPath = path.resolve(__app__, '..', 'controller')
+    const controllerPath = path.resolve(__appname, 'controller')
     const controllerFiles = glob.sync(`${controllerPath}/**/*.js`)
     controllerFiles.forEach(file => this.use(require(file).default.prototype.router.middleware()))
   }
