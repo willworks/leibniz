@@ -26,6 +26,7 @@
       }
     })
     async index (ctx) {
+      const data = await ctx.service.post.show(id)
       ctx.status = 200
       ctx.body = {
         success: true
@@ -33,5 +34,15 @@
     }
   }
   ```
+
+- service/post.js
+  ```javascript
+  export default class PostService {
+    static async function (id) {
+      return await Database.Post.findById(id)
+    }
+  }
+  ```
+
 
 All done.
