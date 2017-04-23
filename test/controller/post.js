@@ -9,7 +9,7 @@ class PostController {
     }
   })
   async index (ctx) {
-    // ctx.service.post.index()
+    await ctx.service.post.index()
     ctx.status = 200
     ctx.body = {
       success: true
