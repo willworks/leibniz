@@ -2,6 +2,7 @@ import koaContext from 'koa/lib/context'
 import path from 'path'
 import glob from 'glob'
 import { autobind } from 'core-decorators'
+import pathDirectory from './util/path-directory'
 
 let _cacheServiceFiles
 
@@ -29,9 +30,9 @@ export default class Context extends KoaContextClass {
     }
     const servicePath = path.resolve(__app__, '..', 'service')
     const serviceFiles = glob.sync(`${servicePath}/**/*.js`)
-    serviceFiles.forEach(file => {
-      this.service[path.basename(file, '.js')] = require(file).default
-    })
+    // console.log(__app__)
+    this.service = pathDirectory(serviceFiles)
+    console.log(this.service)
     _cacheServiceFiles = this.service
   }
 }

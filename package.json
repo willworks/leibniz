@@ -16,6 +16,7 @@
     "bluebird": "^3.5.0",
     "callsite": "^1.0.0",
     "config": "^1.25.1",
+    "contour-require-directory": "^1.0.3",
     "cookies": "^0.7.0",
     "core-decorators": "^0.17.0",
     "glob": "^7.1.1",
@@ -25,7 +26,8 @@
     "koa-compose": "^4.0.0",
     "koa-joi-router": "^5.0.0",
     "koa-jwt": "^3.2.1",
-    "koa-logger": "^2.0.1"
+    "koa-logger": "^2.0.1",
+    "require-directory": "^2.1.1"
   },
   "devDependencies": {
     "ava": "^0.19.1",
