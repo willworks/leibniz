@@ -30,9 +30,7 @@ export default class Context extends KoaContextClass {
     }
     const servicePath = path.resolve(__app__, '..', 'service')
     const serviceFiles = glob.sync(`${servicePath}/**/*.js`)
-    // console.log(__app__)
     this.service = pathDirectory(serviceFiles)
-    console.log(this.service)
     _cacheServiceFiles = this.service
   }
 }
