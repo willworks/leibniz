@@ -2,6 +2,8 @@ import koaResponse from 'koa/lib/response'
 
 export default class Response {
   constructor () {
-    return Object.create(koaResponse)
+    Reflect.ownKeys(koaResponse).forEach(key => {
+      Reflect.defineProperty(this, key, Reflect.getOwnPropertyDescriptor(koaResponse, key))
+    })
   }
 }
