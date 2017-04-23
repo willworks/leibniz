@@ -6,12 +6,12 @@
 
 - [ ] ratelimit 中间件自动装载
 - [ ] 配置文件及读取，据此配置中间件加载等
-- [ ] 中间件装饰器，useBefore 和 useAfter
+- [ ] 中间件装饰器，useBefore 和 useAfter (useAfter 可以在方法运行后执行)
 - [ ] context 扩展方法
 - [ ] request 扩展方法
 - [ ] util 工具类
-- [ ] controller 类中定义钩子 before, after (useBefore 只能装饰类方法，这个相当于装饰了整个类)
-- [ ] ...
+- [ ] controller 类中定义钩子 before, after (after 可以再每个方法运行后执行)
+- [ ] 使用 use 来加载模块，模拟命名空间
 
 ### Example
 
