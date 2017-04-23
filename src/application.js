@@ -2,7 +2,7 @@ import Koa from 'koa'
 import Cookies from 'cookies'
 import accepts from 'accepts'
 import callsite from 'callsite'
-import glob from 'glob-promise'
+import glob from 'glob'
 import path from 'path'
 import { autobind, override } from 'core-decorators'
 
@@ -24,14 +24,14 @@ export default class App extends Koa {
     this.init(this.execPath)
   }
 
-  async init (execPath) {
+  init (execPath) {
     // inject useful middleware
     const middlewarePath = path.resolve(__dirname, 'middleware')
-    const middlewareFiles = await glob(`${middlewarePath}/**/*.js`)
+    const middlewareFiles = glob.sync(`${middlewarePath}/**/*.js`)
     middlewareFiles.forEach(file => this.use(require(file).default()))
     // inject controller
     const controllerPath = path.resolve(execPath, '..', 'controller')
-    const controllerFiles = await glob(`${controllerPath}/**/*.js`)
+    const controllerFiles = glob.sync(`${controllerPath}/**/*.js`)
     controllerFiles.forEach(file => this.use(require(file).default.prototype.router.middleware()))
   }
 

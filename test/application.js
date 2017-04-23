@@ -5,8 +5,6 @@ import request from 'supertest'
 test(async t => {
   const app = new App()
   app.listen()
-  // TODO: take some time to initialize
-  await new Promise(resolve => setTimeout(() => resolve(), 100))
   const res1 = await request(app.callback())
     .get('/post/123')
     .expect(200)
