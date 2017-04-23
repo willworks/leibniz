@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node server.js",
     "build": "babel src -d dist",
-    "test": "ava test/application.js",
+    "test": "ava",
     "commit": "git-cz",
     "commitmsg": "validate-commit-msg"
   },
@@ -69,7 +69,13 @@
     "require": [
       "babel-register"
     ],
-    "babel": "inherit"
+    "babel": "inherit",
+    "files": [
+      "decorator/*.js",
+      "middleware/*.js",
+      "util/*.js",
+      "test/*.js"
+    ]
   },
   "engines": {
     "node": ">= 7.6.0"
