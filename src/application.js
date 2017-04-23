@@ -37,7 +37,7 @@ export default class App extends Koa {
 
   @override
   createContext (req, res) {
-    const context = this.context
+    const context = new Context()
     const request = context.request = new Request()
     const response = context.response = new Response()
     context.app = request.app = response.app = this
