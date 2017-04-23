@@ -1,3 +1,6 @@
+[![CircleCI](https://circleci.com/gh/ruiming/kun.svg?style=shield)](https://circleci.com/gh/sunkuo/schedule-center)
+[![codecov](https://codecov.io/gh/ruiming/kun/branch/master/graph/badge.svg)](https://codecov.io/gh/sunkuo/schedule-center)
+
 ## A Node.js framework build with Koa2
 
 > Build for RESTful Web services
@@ -57,3 +60,6 @@
 
 
 All done.
+
+
+[![Standard - JavaScript Style Guide](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
