@@ -18,7 +18,6 @@ Build for RESTful Web services
 - [ ] context 扩展方法
 - [ ] request 扩展方法
 - [ ] util 工具类
-- [ ] controller 类中定义钩子 before, after (after 可以再每个方法运行后执行)
 - [ ] 使用 use 来加载模块，模拟命名空间
 
 ## Example

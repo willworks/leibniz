@@ -54,7 +54,7 @@ function Method (method, path, ...middleware) {
     target.router.route({
       method: method.toLowerCase(),
       path,
-      validate: descriptor.value.validation,
+      validate: target[key + '__validate'],
       handler: [...middleware, descriptor.value]
     })
   }
